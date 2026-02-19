@@ -1,5 +1,4 @@
 import User from "../models/User.js";
-import jwt from 'jsonwebtoken';
 
 const authControllers = {
 
@@ -30,11 +29,8 @@ const authControllers = {
 
     register: async(req, res) => {
         const {userName, email, password} = req.body;
-        console.log(req.body.userName);
-        
         try{
             const user = await User.findOne({email});
-            console.log(user);
             if(!user){
                 const newUser = new User({
                     userName,
